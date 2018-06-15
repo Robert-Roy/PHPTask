@@ -1,0 +1,13 @@
+#! php
+
+<?php
+
+use Symfony\Component\Console\Application;
+
+require "vendor/autoload.php";
+
+$app = new Application("PHPTask");
+
+//$app->add(new ExampleCommand);
+
+$app->run();
