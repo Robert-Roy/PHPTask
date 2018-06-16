@@ -22,5 +22,7 @@ try {
 $dbAdapter = new Robert\DatabaseAdapter($pdo);
 
 $app->add(new Robert\ShowCommand($dbAdapter));
+$app->add(new Robert\AddCommand($dbAdapter));
+$app->add(new Robert\CompleteCommand($dbAdapter));
 
 $app->run();
