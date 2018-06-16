@@ -8,12 +8,19 @@ require "vendor/autoload.php";
 
 $app = new Application("PHPTask", "1.0");
 
-try{
-    $pdo = new PDO('sqlite:db.sqlite');
+try {
+    $pdo = new PDO('sqlite:database\db.sqlite');
+
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (Exception $ex) {
-    
+    echo "Unable to connect to database";
+    echo $ex;
+    exit(1);
 }
 
-$app->add(new Acme\ShowCommand($dbAdapter));
+$dbAdapter = new Robert\DatabaseAdapter($pdo);
+
+$app->add(new Robert\ShowCommand($dbAdapter));
 
 $app->run();
