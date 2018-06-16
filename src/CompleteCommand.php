@@ -14,10 +14,9 @@ class CompleteCommand extends Command {
     }
 
     public function execute(InputInterface $input, OutputInterface $output) {
-        $description = $input->getArgument('ID');
-        
+        $id = $input->getArgument('ID');
         $this->database->query('DELETE from tasks where id = :id',
-                compact('ID'));
+                compact('id'));
         $output->writeln('<info>Task Completed!</info>');
         $this->showTasks($output);
     }
