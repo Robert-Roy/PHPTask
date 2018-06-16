@@ -24,6 +24,9 @@ class ShowCommand extends Command {
 
     private function showTasks(OutputInterface $output) {
         $tasks = $this->database->fetchAll('tasks');
+        if(!$tasks){
+            return $output->writeln("<info>There are no tasks at this time.</info>");
+        }
         $table = new Table($output);
         $table->setHeaders(['Id', 'Description'])
                 ->setRows($tasks)
