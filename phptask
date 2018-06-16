@@ -8,6 +8,12 @@ require "vendor/autoload.php";
 
 $app = new Application("PHPTask", "1.0");
 
-//$app->add(new ExampleCommand);
+try{
+    $pdo = new PDO('sqlite:db.sqlite');
+} catch (Exception $ex) {
+    
+}
+
+$app->add(new Acme\ShowCommand($dbAdapter));
 
 $app->run();

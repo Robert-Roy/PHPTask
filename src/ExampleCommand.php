@@ -1,5 +1,4 @@
 <?php
-
 namespace Robert;
 
 use Symfony\Component\Console\Command\Command;
