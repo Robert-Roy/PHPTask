@@ -19,6 +19,7 @@ class AddCommand extends Command {
         
         $this->database->query('insert into tasks(description) values(:description)',
                 compact('description'));
+        $output->writeln('<info>Task Added!</info>');
         $this->showTasks($output);
     }
 
